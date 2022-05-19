@@ -1,21 +1,17 @@
 
-const inspirationalQuote = ()  => {
-    fetch("https://api.goprogram.ai/inspiration")
-        .then(response => {
-            return response.json();
-        })
-        .then(response => {
-            let quote = document.getElementById("quote");
-            
-            let htmlQuote = `<div class="quoteDisplay">
-            <div>${quote}</div>
-            <div>${author}</div>
-            </div>`;
-            quote.innerHTML = htmlQuote;
-        })
-        .catch(err => {
-            console.log("Error", err);
-        })
-    }
-
-
+const url = "https://api.quotable.io/random";
+function generateQuote(){
+   fetch(url)
+  .then(function(data) {
+         return data.json();
+    })
+    .then(function(data){    
+    document.getElementById("quote").innerHTML = data.content; document.querySelector(".author").innerHTML = "- " + data.author;
+    
+   })
+   
+ .catch(function(err) {
+    console.log(err); 
+    });
+ }
+ setInterval(generateQuote() ,10000);
