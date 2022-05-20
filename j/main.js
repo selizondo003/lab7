@@ -1,30 +1,31 @@
-const quote = () => {
-    fetch("https://api.goprogram.ai/inspiration")
+const inspirationalQuote = ()  => {
+    fetch("https://api.quotable.io/random")
         .then(response => {
-            return response.json()
+            return response.json();
         })
-        .then( data => {
-            let a = 0;
-
-            let next = document.getElementById("next");
-            next.addEventListener('click', (e) => {
-                let countN = document.getElementById("countN");
-                countN.value = ++a;
-                inspoQuote(countN.value,data);
-            },false);
+        .then(response => {
+            document.getElementById("quote").innerHTML = response.content; 
+            document.getElementById("author").innerHTML = "- " + response.author;
         })
-        .catch((err) => console.log("Oops!", err));
-    
+      .catch(function(err) {
+            console.log("Error", err);
+        });
+    }
+    inspirationalQuote();
 
-        function inspoQuote(index, data){
-            
 
-            if(data[index].author == null) {
-                data[index].author ="unknown";
-            }
-            let displayQuote = `<div class="quoteDisplay">
-            <div>${data[index].quote}</div>
-            <div>${data[index].author}</div>
-            </div>`;
-            quoteAuthor.innerHTML = displayQuote;
-        }}
+
+const randomImg =() =>{
+    fetch("https://random.dog/woof.json")
+        .then(data => {
+            return data.json();
+        })
+        .then(data => {
+            const imgElement = document.getElementById("imgElement")
+            imgElement.src=data.url;
+        })
+        .catch(function(err) {
+            console.log("Error", err);
+        });
+};
+randomImg();
