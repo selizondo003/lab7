@@ -1,3 +1,4 @@
+//pulling in a random inspirational quote 
 const inspirationalQuote = ()  => {
     fetch("https://api.quotable.io/random")
         .then(response => {
@@ -14,7 +15,7 @@ const inspirationalQuote = ()  => {
     inspirationalQuote();
 
 
-
+//pulling in a random dog image or video
 const randomImg =() =>{
     fetch("https://random.dog/woof.json")
         .then(data => {
