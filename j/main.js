@@ -1,4 +1,3 @@
-
 const inspirationalQuote = ()  => {
     fetch("https://api.quotable.io/random")
         .then(response => {
